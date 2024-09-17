@@ -33,7 +33,8 @@ function NavbarLinks() {
 
         // Filter out duplicates based on the _id field
         const newLinks = resp.data.filter(
-          (newLink: NavbarLinks) => !links.some((link) => link._id === newLink._id)
+          (newLink: NavbarLinks) =>
+            !links.some((link) => link._id === newLink._id)
         );
 
         // Only update the state if there are new, non-duplicate links
@@ -48,24 +49,53 @@ function NavbarLinks() {
   }, [links]);
 
   return (
-    <div className="hidden md:flex justify-center items-center gap-x-2 ml-8">
-      {links.map((link) => {
-        const isActive =
-          link.category_name === "/"
-            ? location === "/"
-            : location === `/products/${link.category_name}`;
+    <>
+      <div className="hidden md:flex justify-center items-center gap-x-2 ml-8">
+        {links.map((link) => {
+          const isActive =
+            link.category_name === "/"
+              ? location === "/"
+              : location === `/products/${link.category_name}`;
 
-        return (
-          <Link
-            key={link._id}
-            href={link.category_name === "/" ? "/" : `/products/${link.category_name}`}
-            className={cn(isActive ? 'bg-muted' : 'hover:bg-muted hover:bg-opacity-75', 'group p-2 font-medium rounded-md')}
-          >
-            {link.category_title}
-          </Link>
-        );
-      })}
-    </div>
+          return (
+            <Link
+              key={link._id}
+              href={
+                link.category_name === "/"
+                  ? "/"
+                  : `/products/${link.category_name}`
+              }
+              className={cn(
+                isActive ? "bg-muted" : "hover:bg-muted hover:bg-opacity-75",
+                "group p-2 font-medium rounded-md"
+              )}
+            >
+              {link.category_title}
+            </Link>
+          );
+        })}
+      </div>
+      <div className="md:hidden flex flex-col">
+        {links.map((link) => {
+          const isActive =
+            link.category_name === "/"
+              ? location === "/"
+              : location === `/products/${link.category_name}`;
+          return (
+            <Link
+              key={link._id}
+              href={`/products/${link.category_name}`}
+              className={cn(
+                isActive ? "bg-muted" : "hover:bg-muted hover:bg-opacity-75",
+                "group p-2 font-medium rounded-md"
+              )}
+            >
+              {link.category_title}
+            </Link>
+          );
+        })}
+      </div>
+    </>
   );
 }
 

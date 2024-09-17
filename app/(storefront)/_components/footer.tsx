@@ -160,6 +160,14 @@ const Footer = () => {
               Terms &amp; Conditions
             </a>
           </li>
+          <li>
+            <a
+              href="#termCondi"
+              className="cursor-pointer text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+            >
+              Freedom Wall
+            </a>
+          </li>
         </ul>
       </div>
     </footer>
