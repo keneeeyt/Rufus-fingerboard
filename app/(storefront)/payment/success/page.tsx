@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, XCircle } from "lucide-react";
+import { Check } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 

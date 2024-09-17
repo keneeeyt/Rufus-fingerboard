@@ -3,9 +3,9 @@ import Order from "@/lib/models/Order";
 import Product from "@/lib/models/Product";
 import User from "@/lib/models/User";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
   try {
     const { getUser } = getKindeServerSession();
     const user = await getUser();

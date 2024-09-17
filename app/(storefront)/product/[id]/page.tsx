@@ -7,7 +7,6 @@ import FeaturedProducts from "../../_components/featured-products";
 import { toast } from "sonner";
 import { Button } from "@/components/custom/button";
 import { useCart } from "@/app/_context/CartContext";
-import { notFound } from "next/navigation";
 import NotFound from "@/app/not-found";
 
 

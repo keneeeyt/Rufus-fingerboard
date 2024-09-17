@@ -44,7 +44,7 @@ function UpdateOrder({ open, onClose, id }: UpdateProps) {
       }
     };
     getData()
-  }, []);
+  }, [id]);
 
   const handleUpdate = async () => {
     setIsLoading(true);

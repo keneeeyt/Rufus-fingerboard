@@ -98,7 +98,7 @@ function EditProductPage({params} : {params: { id: string}}) {
       }
     }
     getData();
-  },[params])
+  },[params, form])
 
 
 
@@ -317,7 +317,8 @@ function EditProductPage({params} : {params: { id: string}}) {
                       setImages(res.map((r) => r.url));
                       // toast.success("Image uploaded successfully");
                     }}
-                    onUploadError={(err) => {
+                    onUploadError={(err: any) => {
+                      console.log(err)
                       toast.error("Image upload failed");
                     }}
                   />

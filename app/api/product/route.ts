@@ -54,7 +54,7 @@ export const POST = async (req: NextRequest) => {
 };
 
 // Get all products (GET)
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
   try {
     const { getUser } = getKindeServerSession();
     const user = await getUser();

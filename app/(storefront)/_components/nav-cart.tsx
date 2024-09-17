@@ -1,11 +1,10 @@
 'use client'
 import { useCart } from "@/app/_context/CartContext";
-import axios from "axios";
 import { ShoppingBagIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-function NavCart({user}: any) {
+function NavCart() {
   const {cart, refreshCart} = useCart();
   const [shouldRefresh, setShouldRefresh] = useState(false);
 

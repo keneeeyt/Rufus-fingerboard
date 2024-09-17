@@ -16,11 +16,14 @@ function RecentSales() {
 
   useEffect(() => {
     const getData = async () => {
+      setIsLoading(true);
       try {
         const resp = await axios.get("/api/dashboard/recent-sales");
         setData(resp.data);
       } catch (err) {
         console.error("Error fetching data:", err);
+      } finally {
+        setIsLoading(false);
       }
     };
     getData();
@@ -35,8 +38,8 @@ function RecentSales() {
         {isLoading ? (
           <p className="text-center mt-2">Loading...</p>
         ) : data.length > 0 ? (
-          data.map((sale: any) => (
-            <div className="flex items-center gap-4">
+          data.map((sale: any, index: any) => (
+            <div key={index} className="flex items-center gap-4">
               <Avatar className="hidden sm:flex h-9 w-9">
                 <AvatarImage src="" alt="user-profile" />
                 <AvatarFallback>{sale.userDetails?.name.split(" ")[0].slice(0, 2).toUpperCase()}</AvatarFallback>

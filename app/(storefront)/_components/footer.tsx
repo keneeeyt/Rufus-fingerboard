@@ -12,7 +12,7 @@
 
 // export default Footer;
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 

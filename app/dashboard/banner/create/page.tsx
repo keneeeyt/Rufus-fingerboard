@@ -127,6 +127,7 @@ function CreateBannerPage() {
                       // toast.success("Image uploaded successfully");
                     }}
                     onUploadError={(err) => {
+                      console.log(err);
                       toast.error("Image upload failed");
                     }}
                   />

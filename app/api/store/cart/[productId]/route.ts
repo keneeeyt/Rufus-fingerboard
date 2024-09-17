@@ -5,7 +5,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
-export const POST = async (req: NextRequest, { params }: { params: { productId: any } }) => {
+export const POST = async ({}, { params }: { params: { productId: any } }) => {
   try {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
@@ -17,7 +17,7 @@ export const POST = async (req: NextRequest, { params }: { params: { productId: 
     await connectDB();
 
     // Find the cart by userId, not cart ID
-    let cart = await Cart.findOne({ userId: user.id }) || null;
+    let cart = await Cart.findOne({ userId: user.id }) || null; // eslint-disable-line
 
     const selectedProduct = await Product.findById(params.productId);
 
@@ -82,7 +82,7 @@ export const DELETE = async (req: NextRequest, { params }: { params: { productId
 
     await connectDB();
 
-    let cart = await Cart.findOne({ userId: user.id }) || null;
+    let cart = await Cart.findOne({ userId: user.id }) || null; //eslint-disable-line
 
     if(!cart || !cart.items){
       return NextResponse.json("Cart is empty", { status: 200 });

@@ -64,7 +64,7 @@ function EditCategoryPage({ params }: { params: { id: string } }) {
       }
     };
     getData();
-  }, []);
+  }, [form, params.id]);
 
   const onSubmit = async (data: CategoryFormValues) => {
     try {
@@ -77,7 +77,7 @@ function EditCategoryPage({ params }: { params: { id: string } }) {
 
       if(images.length === 0) return toast.error("Category image is required");
 
-      const resp = await axios.put(`/api/category/${params.id}`, data);
+      const resp = await axios.put(`/api/category/${params.id}`, formData);
 
       if (resp.status === 200) {
         toast.success("Category updated successfully");
@@ -170,7 +170,8 @@ function EditCategoryPage({ params }: { params: { id: string } }) {
                       setImages(res.map((r) => r.url));
                       // toast.success("Image uploaded successfully");
                     }}
-                    onUploadError={(err) => {
+                    onUploadError={(err: any) => {
+                      console.log(err)
                       toast.error("Image upload failed");
                     }}
                   />

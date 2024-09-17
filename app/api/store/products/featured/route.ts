@@ -1,8 +1,8 @@
 import { connectDB } from "@/config/mongo-connect";
 import Product from "@/lib/models/Product";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
  try{
 
 

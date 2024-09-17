@@ -21,7 +21,6 @@ import {
 import { ColumnDef } from "@tanstack/react-table";
 import axios from "axios";
 import { ArrowUpDown, LoaderIcon, MoreHorizontal } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";

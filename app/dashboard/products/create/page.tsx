@@ -303,7 +303,8 @@ function ProductCreatePage() {
                       setImages(res.map((r) => r.url));
                       // toast.success("Image uploaded successfully");
                     }}
-                    onUploadError={(err) => {
+                    onUploadError={(err:any) => {
+                      console.log(err)
                       toast.error("Image upload failed");
                     }}
                   />

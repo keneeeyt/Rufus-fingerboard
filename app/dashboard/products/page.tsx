@@ -21,7 +21,6 @@ import { DataTable } from "@/components/custom/data-table";
 import axios from "axios";
 import {
   MoreHorizontal,
-  PlusCircle,
   ArrowUpDown,
   LoaderIcon,
 } from "lucide-react";
@@ -32,7 +31,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Modal from "@/components/custom/modal";
 import { toast } from "sonner";
 
-const productsPage = () => {
+const ProductsPage = () => {
   const [products, setProduct] = useState([]);
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -214,4 +213,4 @@ const productsPage = () => {
   );
 };
 
-export default productsPage;
+export default ProductsPage;

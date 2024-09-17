@@ -8,13 +8,11 @@ import axios from "axios";
 import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const BagPageContent = () => {
   const { cart, refreshCart, isError } = useCart();
-  const [deleteLoading, setDeleteLoading] = useState(false);
   const [loading, setLoading] = useState(true);
   const [isCheckoutError, setIsCheckoutError] = useState(false);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
@@ -35,7 +33,6 @@ const BagPageContent = () => {
   }
 
   const deleteItem = async (item: any) => {
-    setDeleteLoading(true);
     try {
       const resp = await axios.delete(`/api/store/cart/${item.id}`);
       if (resp.status === 200) {
@@ -45,8 +42,6 @@ const BagPageContent = () => {
     } catch (err) {
       console.log(err);
       toast.error("Something went wrong");
-    } finally {
-      setDeleteLoading(false);
     }
   };
 
@@ -99,17 +94,17 @@ const BagPageContent = () => {
             <div className="mt-5 w-full h-12 bg-gray-300 rounded-md" />
           </div>
         </div>
-      ) : !Array.isArray(cart) || cart.length === 0? (
+      ) : !Array.isArray(cart) || cart.length === 0 ? (
         <div className="flex min-h-[400px] flex-col items-center justify-center rounded-lg border border-dashed p-8 text-center mt-20">
           <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
             <ShoppingBag className="w-10 h-10 text-primary" />
           </div>
           <h2 className="mt-6 text-xl font-semibold">
-            You don't have any items in your bag
+            You don&#39;t have any items in your bag
           </h2>
           <p className="mb-8 mt-2 text-center text-sm leading-6 text-muted-foreground max-w-sm mx-auto">
-            Your currnetly don't have any products in your shopping bag. Please
-            add some so that you can see them right here.
+            You currently don&#39;t have any products in your shopping bag.
+            Please add some so that you can see them right here.
           </p>
 
           <Button asChild>

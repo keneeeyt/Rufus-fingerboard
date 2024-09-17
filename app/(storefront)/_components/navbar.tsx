@@ -7,7 +7,6 @@ import {
   RegisterLink,
   getKindeServerSession,
 } from "@kinde-oss/kinde-auth-nextjs/server";
-import { ShoppingBagIcon } from "lucide-react";
 import UserDropdown from "./user-dropdown";
 import { Button } from "@/components/ui/button";
 import NavCart from "./nav-cart";
@@ -28,7 +27,7 @@ async function Navbar() {
       <div className="flex items-center">
         {user ? (
           <>
-            <NavCart user={user} />
+            <NavCart />
 
             <UserDropdown
               email={user.email as string}

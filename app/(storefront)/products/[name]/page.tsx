@@ -2,7 +2,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../../_components/product-card";
-import { CircuitBoard, EyeOffIcon, GlassesIcon, NotebookTabsIcon, Salad } from "lucide-react";
+import { GlassesIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ErrorPage from "@/app/error-page";

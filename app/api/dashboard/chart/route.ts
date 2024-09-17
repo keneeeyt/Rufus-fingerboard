@@ -1,9 +1,9 @@
 import { connectDB } from "@/config/mongo-connect";
 import Order from "@/lib/models/Order";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
   try {
     const { getUser } = getKindeServerSession();
     const user = await getUser();

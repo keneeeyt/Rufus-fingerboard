@@ -4,32 +4,35 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 
 
-export const GET = async (req:NextRequest, {params} : {params:{id: any}}) => {
-  try{
-    const {getUser} = getKindeServerSession();
+export const GET = async ({},{ params }: { params: { id: any } }) => {
+  try {
+    const { getUser } = getKindeServerSession();
     const user = await getUser();
 
-    if(!user || user === null || !user.id) {
-      return new NextResponse("Unauthorized", {status: 403})
+    if (!user || !user.id) {
+      return new NextResponse("Unauthorized", { status: 403 });
     }
 
     await connectDB();
 
-    const {id} = params;
+    const { id } = params;
+
+    if (!id) {
+      return new NextResponse("Bad Request: Missing Banner ID", { status: 400 });
+    }
 
     const banner = await Banner.findById(id);
 
-    if(!banner) {
-      return NextResponse.json("Banner not found", {status: 404})
+    if (!banner) {
+      return NextResponse.json("Banner not found", { status: 404 });
     }
 
-    return NextResponse.json(banner, {status: 200})
-
-  }catch(err){
-    console.log(err)
+    return NextResponse.json(banner, { status: 200 });
+  } catch (err) {
+    console.error(err);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
-}
+};
 
 export const PUT = async(req:NextRequest, {params} : {params:{id: any}}) => {
   try{
@@ -65,7 +68,7 @@ export const PUT = async(req:NextRequest, {params} : {params:{id: any}}) => {
   }
 }
 
-export const DELETE = async (req: NextRequest, {params}:{params:{id: any}}) => {
+export const DELETE = async ({params}:{params:{id: any}}) => {
   try{
     const {getUser} = getKindeServerSession();
     const user = await getUser();

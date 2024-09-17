@@ -2,12 +2,11 @@ import { connectDB } from "@/config/mongo-connect";
 import { stripe } from "@/config/stripe";
 import Cart from "@/lib/models/Cart";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { redirect } from "next/dist/server/api-utils";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { Stripe } from "stripe";
 
 
-export const POST = async(req: NextRequest) => {
+export const POST = async() => {
   try{
     const {getUser} = getKindeServerSession();
     const user = await getUser();
@@ -19,7 +18,7 @@ export const POST = async(req: NextRequest) => {
     await connectDB();
 
 
-    let cart = await Cart.findOne({ userId: user.id }) || null;
+    let cart = await Cart.findOne({ userId: user.id }) || null; //eslint-disable-line
 
     if(cart || cart.items) {
 
