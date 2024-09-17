@@ -43,8 +43,11 @@ function ProductIdPage({ params }: { params: { id: string } }) {
         toast.success("Product added to cart");
       }
       refreshCart();
-    } catch (err) {
+    } catch (err: any) {
       console.log(err);
+      if(err.status === 401) {
+        toast.error("Please Sign in to add items to cart");
+      }
       toast.error("Something went wrong");
     } finally {
       setSubmitLoading(false);
