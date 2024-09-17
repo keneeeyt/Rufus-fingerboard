@@ -5,7 +5,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
-export const POST = async ({}, { params }: { params: { productId: any } }) => {
+export const POST = async (req:NextRequest, { params }: { params: { productId: any } }) => {
   try {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
