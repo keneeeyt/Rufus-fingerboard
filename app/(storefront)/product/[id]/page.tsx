@@ -47,8 +47,10 @@ function ProductIdPage({ params }: { params: { id: string } }) {
       console.log(err);
       if(err.status === 401) {
         toast.error("Please Sign in to add items to cart");
+      } else {
+        toast.error("Something went wrong");
       }
-      toast.error("Something went wrong");
+   
     } finally {
       setSubmitLoading(false);
     }
