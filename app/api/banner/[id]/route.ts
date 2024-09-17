@@ -4,7 +4,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 
 
-export const GET = async ({},{ params }: { params: { id: any } }) => {
+export const GET = async (req: NextRequest, { params }: { params: { id: any } }) => {
   try {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
@@ -32,7 +32,7 @@ export const GET = async ({},{ params }: { params: { id: any } }) => {
     console.error(err);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
-};
+}
 
 export const PUT = async(req:NextRequest, {params} : {params:{id: any}}) => {
   try{
