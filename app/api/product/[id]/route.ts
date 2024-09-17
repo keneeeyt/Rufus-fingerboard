@@ -7,12 +7,6 @@ import mongoose from "mongoose";
 // Get a single product by ID (GET with params)
 export const GET = async (req: NextRequest, { params } : {params: {id: any}}) => {
   try {
-    const { getUser } = getKindeServerSession();
-    const user = await getUser();
-
-    if (!user || user === null || !user.id) {
-      return new NextResponse("Unauthorized", { status: 403 });
-    }
 
     await connectDB();
 
