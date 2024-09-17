@@ -18,7 +18,7 @@ export async function GET() {
     const isUserExists = await User.findOne({ user_id: user.id });
     
     if (isUserExists) {
-      return NextResponse.redirect("http://localhost:3000/");
+      return NextResponse.redirect("https://rufus-fingerboard.vercel.app/");
     }
 
     const newUser = new User({
@@ -31,7 +31,7 @@ export async function GET() {
 
     await newUser.save();
 
-    return NextResponse.redirect("http://localhost:3000/");
+    return NextResponse.redirect("https://rufus-fingerboard.vercel.app/");
   } catch (err) {
     console.log("Creating user", err);
     return new NextResponse("Internal Server Error", { status: 500 });
