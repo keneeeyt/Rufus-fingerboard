@@ -40,8 +40,8 @@ export const POST = async() => {
       const session = await stripe.checkout.sessions.create({
         mode: 'payment',
         line_items: lineItems,
-        success_url: 'http://localhost:3000/payment/success',
-        cancel_url: 'http://localhost:3000/payment/cancel',
+        success_url: 'https://rufus-fingerboard.vercel.app/payment/success',
+        cancel_url: 'https://rufus-fingerboard.vercel.app/payment/cancel',
         shipping_address_collection: {
           allowed_countries: ['US', 'CA', 'GB', 'AU', 'PH'],
         },
