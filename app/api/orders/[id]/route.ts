@@ -27,7 +27,7 @@ export const PUT = async (req: NextRequest, {params}: {params: {id: string}}) =>
 };
 
 
-export const GET = async ({},{params}:{params:{id: string}}) => {
+export const GET = async (req:NextRequest,{params}:{params:{id: string}}) => {
   try{
     const { getUser } = getKindeServerSession();
     const user = await getUser();
