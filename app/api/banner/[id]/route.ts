@@ -68,7 +68,7 @@ export const PUT = async(req:NextRequest, {params} : {params:{id: any}}) => {
   }
 }
 
-export const DELETE = async ({params}:{params:{id: any}}) => {
+export const DELETE = async (req:NextRequest, {params}:{params:{id: any}}) => {
   try{
     const {getUser} = getKindeServerSession();
     const user = await getUser();
