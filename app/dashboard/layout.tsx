@@ -26,9 +26,9 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
 
   const user = await getUser();
 
-  if (!user || user.email !== `${process.env.VALID_EMAIL_ADMIN}`) {
+  if (!user || (user.email !== `${process.env.VALID_EMAIL_ADMIN}` && user.email !== 'rufusfingerboards@gmail.com')) {
     return redirect("/");
-  }
+}
 
   return (
     <div className="flex w-full flex-col max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

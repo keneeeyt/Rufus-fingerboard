@@ -67,8 +67,8 @@ export const DELETE = async (req: NextRequest, { params }: { params: { id: any }
     const { getUser } = getKindeServerSession();
     const user = await getUser();
 
-    if (!user || user.email !== process.env.VALID_EMAIL_ADMIN) {
-      return new NextResponse("Unauthorized", { status: 403 });
+    if(!user || (user.email !== `${process.env.VALID_EMAIL_ADMIN}` && user.email !== 'rufusfingerboards@gmail.com')) {
+      return NextResponse.redirect("https://rufus-fingerboard.vercel.app/")
     }
 
     await connectDB();
